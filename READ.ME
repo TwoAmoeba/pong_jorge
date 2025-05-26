@@ -1,0 +1,53 @@
+# Comparación de Rendimiento: VirtualBox vs Docker con Pong
+
+Este proyecto evalúa el rendimiento del juego **Pong**, desarrollado en **Python** utilizando la biblioteca **Pygame**, en dos entornos de virtualización: una máquina virtual Ubuntu sobre VirtualBox y un contenedor Docker. Se recopilan diversas métricas—uso de CPU, consumo de memoria, tiempo de inicio y velocidad de red—para analizar cómo cada tecnología gestiona los recursos del sistema durante la ejecución del juego.
+
+## Objetivos
+
+- Comparar el consumo de recursos y tiempos de inicio entre una máquina virtual y un contenedor Docker.
+- Determinar cuál de los dos entornos resulta más eficiente para ejecutar aplicaciones ligeras como Pong.
+- Extraer conclusiones sobre la idoneidad de la virtualización tradicional versus la contenedorización para entornos de desarrollo y pruebas.
+
+## Estructura del Proyecto
+
+- **pong.py**  
+  Código fuente del juego Pong, desarrollado en Python con Pygame.
+  
+- **Dockerfile**  
+  Archivo de configuración para construir la imagen Docker capaz de ejecutar Pong.
+
+- **metrics/**  
+  Scripts y archivos para la recolección de métricas de rendimiento (CPU, memoria, tiempo y red).
+
+- **notebooks/**  
+  Jupyter Notebooks con gráficos y análisis comparativo de las métricas obtenidas.
+
+- **README.md**  
+  Este documento, que describe el proyecto, cómo funciona y cómo se ejecuta en cada entorno.
+
+## Requerimientos
+
+- **Máquina Virtual (Ubuntu en VirtualBox)**
+  - Ubuntu 22.04 LTS
+  - 4 núcleos de CPU, 8 GB de RAM, 40 GB de almacenamiento
+  - Python 3.10, Pygame
+  - Herramientas de monitoreo: `htop`, `vmstat`, `sysbench`
+
+- **Contenedor Docker**
+  - Docker instalado en el sistema
+  - Imagen base de Python 3.10 (versión slim)
+  - Dependencias instaladas: Pygame y librerías de soporte
+  - Comandos para la construcción y ejecución del contenedor
+
+## Instalación y Ejecución
+
+### En la Máquina Virtual (Ubuntu en VirtualBox)
+
+1. **Configuración del Sistema:**  
+   Instala Ubuntu 22.04 en VirtualBox con la asignación detallada de recursos.
+  
+2. **Instalación de Dependencias:**  
+   Ejecuta los siguientes comandos para actualizar el sistema e instalar Python y Pygame:
+   ```bash
+   sudo apt update && sudo apt install -y python3 python3-pip
+   pip install pygame
